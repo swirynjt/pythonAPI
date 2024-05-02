@@ -39,7 +39,7 @@ class UppercaseText(Resource):
 
         #return json.dumps({"text": text.upper()})
         tts = await TTS(model_name = 'tts_models/en/ljspeech/tacotron2-DCA')
-        audioFile = tts.tts_to_file(text=text)
+        audioFile = await tts.tts_to_file(text=text)
         return json.dumps({"wav": audioFile})
 
 api.add_resource(UppercaseText, "/uppercase")
