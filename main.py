@@ -11,7 +11,7 @@ swagger = Swagger(app)
 
 class UppercaseText(Resource):
 
-    def get(self):
+    async def get(self):
         """
         This method responds to the GET request for this endpoint and returns the data in uppercase.
         ---
@@ -38,7 +38,7 @@ class UppercaseText(Resource):
         text = request.args.get('text')
 
         #return json.dumps({"text": text.upper()})
-        tts = TTS(model_name = 'tts_models/en/ljspeech/tacotron2-DCA')
+        tts = await TTS(model_name = 'tts_models/en/ljspeech/tacotron2-DCA')
         audioFile = tts.tts_to_file(text=text)
         return json.dumps({"wav": audioFile})
 
