@@ -2,3 +2,4 @@ flask
 flask_restful
 flasgger
 TTS
+gunicorn==19.7.1
